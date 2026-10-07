@@ -49,4 +49,12 @@ export class AppComponent implements OnInit {
       this.loading.set(false);
     }
   }
+
+  cleanDescription(text: string): string {
+  if (!text) return '';
+  return text
+    .replace(/\*\*/g, '')          // removes all markdown bold asterisks
+    .replace(/\s+/g, ' ')          // normalizes extra whitespace
+    .trim();
+}
 }

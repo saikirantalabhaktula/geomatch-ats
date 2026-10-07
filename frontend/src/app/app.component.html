@@ -1,4 +1,3 @@
-
 <div class="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-10 font-sans">
   <div class="max-w-6xl mx-auto">
     <!-- Top Navigation / Header -->
@@ -8,7 +7,7 @@
           <span class="h-3 w-3 rounded-full bg-emerald-500 animate-pulse"></span>
           <h1 class="text-3xl font-extrabold text-white tracking-tight">GeoMatch <span class="text-sky-400">ATS</span></h1>
         </div>
-        <p class="text-sm text-slate-400 mt-1">NLP-Ranked Resume Matches &bull; Sourced from LinkedIn & Indeed</p>
+        <p class="text-sm text-slate-400 mt-1">NLP-Ranked Resume Matches &bull; Sourced from LinkedIn &amp; Indeed</p>
       </div>
 
       <!-- Location Search Filter -->
@@ -26,7 +25,7 @@
     <!-- Metrics Bar -->
     <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-6 px-1">
       <span>Showing <strong class="text-white">{{ jobs().length }}</strong> ranked openings</span>
-      <span>Ranked by TF-IDF & Cosine Similarity</span>
+      <span>Ranked by TF-IDF &amp; Cosine Similarity</span>
     </div>
 
     <!-- Loading State -->
@@ -46,11 +45,11 @@
           <!-- Card Header: Source & Match Score -->
           <div class="flex justify-between items-center mb-3">
             <span class="text-[11px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-slate-800 text-sky-400 border border-slate-700">
-              {{ job.source }}
+              {{ job.source || 'INDEED' }}
             </span>
             <span 
               class="text-xs font-bold px-2.5 py-0.5 rounded-full" 
-              [ngClass]="job.match_score >= 35 ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-800/60' : 'bg-amber-950/80 text-amber-400 border border-amber-800/60'">
+              [ngClass]="job.match_score >= 12 ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-800/60' : 'bg-amber-950/80 text-amber-400 border border-amber-800/60'">
               {{ job.match_score }}% Match
             </span>
           </div>
@@ -65,14 +64,14 @@
 
           <!-- Snippet -->
           <p class="text-xs text-slate-400 line-clamp-3 mb-4 leading-relaxed">
-            {{ job.description }}
+          {{ cleanDescription(job.description) }}
           </p>
 
           <!-- Skills Pills -->
           <div class="flex flex-wrap gap-1.5 mb-5">
             <span 
               *ngFor="let skill of job.matched_skills" 
-              class="text-[11px] bg-sky-950/60 text-sky-300 border border-sky-800/40 px-2 py-0.5 rounded-md">
+             class="text-[11px] capitalize bg-sky-950/60 text-sky-300 border border-sky-800/40 px-2 py-0.5 rounded-md">
               {{ skill }}
             </span>
           </div>
@@ -84,7 +83,7 @@
           target="_blank" 
           rel="noopener noreferrer"
           class="w-full text-center py-2.5 bg-sky-600 hover:bg-sky-500 text-white rounded-xl text-xs font-semibold tracking-wide transition shadow-sm hover:shadow-sky-600/30">
-          Apply on {{ job.source }} &rarr;
+          Apply on {{ job.source || 'Indeed' }} &rarr;
         </a>
       </div>
     </div>

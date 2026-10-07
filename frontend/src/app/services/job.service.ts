@@ -8,8 +8,8 @@ export class JobService {
   private supabase: SupabaseClient;
 
   // Replace these with your actual Supabase Project URL and public anon key
-  private supabaseUrl = 'YOUR_SUPABASE_URL_HERE';
-  private supabaseAnonKey = 'YOUR_SUPABASE_ANON_PUBLIC_KEY_HERE';
+  private supabaseUrl = 'https://raxyojwyafzgrwxlvtqs.supabase.co';
+  private supabaseAnonKey = 'sb_publishable_BCYKxqxqEaa12LZN1y_GVg_yPgGxEZG';
 
   constructor() {
     this.supabase = createClient(this.supabaseUrl, this.supabaseAnonKey);

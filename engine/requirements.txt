@@ -1,0 +1,5 @@
+python-jobspy
+scikit-learn
+pandas
+supabase
+python-dotenv
